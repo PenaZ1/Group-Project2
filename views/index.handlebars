@@ -1,33 +1,58 @@
 <div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+  <div class="ui container">
+    <div class="ui segment">
+      <div class="ui two column very relaxed grid">
+        <div class="column center">
+          <div class="ui card">
+            <div class="content">
+              <i class="right floated like icon"></i>
+              <i class="right floated star icon"></i>
+              <div class="header">Cute Dog</div>
+              <div class="description">
+                <p></p>
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="left floated like">
+                <i class="like icon"></i>
+                Like
+              </span>
+              <span class="right floated star">
+                <i class="star icon"></i>
+                Favorite
+              </span>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+        </div>
+        <div class="column">
+          <div class="ui card">
+            <div class="content">
+              <i class="right floated like icon"></i>
+              <i class="right floated star icon"></i>
+              <div class="header">Cute Dog</div>
+              <div class="description">
+                <p></p>
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="left floated like">
+                <i class="like icon"></i>
+                Like
+              </span>
+              <span class="right floated star">
+                <i class="star icon"></i>
+                Favorite
+              </span>
+            </div>
           </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+        </div>
+      </div>
+      <div class="ui vertical divider">
+        and
       </div>
     </div>
   </div>
-</div>
+
 
 <form action="/login" method="post">
     <div>
@@ -45,3 +70,7 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../public/js/index.js"></script>
+  <!-- You MUST include jQuery before Fomantic -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+  <script src="/semantic/dist/semantic.min.js"></script>
