@@ -116,6 +116,30 @@ $("#login").on("click", function(event) {
       console.log(data.url);
     })
     .catch(err => {
-      console.log(err);
+      console.log(err.statusCode());
+    });
+});
+$("#register").on("click", function(event) {
+  event.preventDefault();
+  $.ajax({
+    headers: {
+      "Content-Type": "application/json"
+    },
+    type: "POST",
+    url: "/register",
+    data: JSON.stringify({
+      username: $("#rusername").val(),
+      password: $("#rpassword").val()
+    })
+  })
+    .then(data => {
+      if (data.err){
+        alert(data.err);
+      } else {
+        window.location.href = data.url;
+      }
+    })
+    .catch(err => {
+      console.log(err.statusCode());
     });
 });

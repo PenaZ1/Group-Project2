@@ -53,20 +53,37 @@
     </div>
   </div>
 
-
+Log In
 <form action="/login" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username" id = "username"/>
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password" id = "password"/>
-    </div>
-    <div>
-        <input type="submit" value="Log In" id = "login"/>
-    </div>
+  <div>
+      <label>Username:</label>
+      <input type="text" name="username" id="username"/>
+  </div>
+  <div>
+      <label>Password:</label>
+      <input type="password" name="password" id="password"/>
+  </div>
+  <div>
+      <input type="submit" value="Log In" id="login"/>
+  </div>
 </form>
+Sign Up
+<form action="/register" method="post">
+  <div>
+      <label>Username:</label>
+      <input type="text" name="username" id="rusername"/>
+  </div>
+  <div>
+      <label>Password:</label>
+      <input type="password" name="password" id="rpassword"/>
+  </div>
+  <div>
+      <input type="submit" value="Register" id="register"/>
+  </div>
+</form>
+<a href="/api/users">
+List of all users
+</a>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

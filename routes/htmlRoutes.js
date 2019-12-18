@@ -24,8 +24,6 @@ htmlRoutes.get("/user/:id", async (req, res) => {
     // Replace this shit with the profile view
     example: dbUser
   });
-
-  console.log(dbUser);
 });
 
 // Render 404 page for any unmatched routes
