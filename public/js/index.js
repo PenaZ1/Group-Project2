@@ -98,7 +98,7 @@ var handleDeleteBtnClick = function() {
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-$("#login").on(click, function(event) {
+$("#login").on("click", function(event) {
   event.preventDefault();
   $.ajax({
     headers: {
@@ -107,8 +107,15 @@ $("#login").on(click, function(event) {
     type: "POST",
     url: "/login",
     data: JSON.stringify({
-      username: $("#username").text(),
-      password: $("#password").text()
+      username: $("#username").val(),
+      password: $("#password").val()
     })
-  });
+  })
+    .then(function(data) {
+      window.location.href = data.url;
+      console.log(data.url);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
