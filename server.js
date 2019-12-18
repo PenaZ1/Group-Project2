@@ -3,6 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const routes = require("./routes");
 const db = require("./models");
+var passport = require("passport");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,10 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.use(routes);

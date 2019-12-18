@@ -12,18 +12,20 @@ htmlRoutes.get("/", async (req, res) => {
   });
 });
 
-// Load example page and pass in an example by id
+// Load profile for user
 htmlRoutes.get("/user/:id", async (req, res) => {
-  const dbUser = await db.Example.findOne({
+  const dbUser = await db.User.findOne({
     where: {
-      id: req.params.id
+      id: parseInt(req.params.id)
     }
   });
 
-  res.render("user", {
-    example: dbUser // Replace this shit with the profile view
+  res.render("example", {
+    // Replace this shit with the profile view
+    example: dbUser
   });
-  
+
+  console.log(dbUser);
 });
 
 // Render 404 page for any unmatched routes
