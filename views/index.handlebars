@@ -1,81 +1,36 @@
-<form class="ui form">
-    <div class="field">
-        <label>First Name</label>
-        <input type="text" name="first-name" placeholder="First Name">
+<div class="field">
+    <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden">
+        <label>I agree to the Terms and Conditions</label>
+        <div class="ui inverted menu">
+            <a class="active item">
+                Home
+            </a>
+            <a class="item">
+                Messages
+            </a>
+            <a class="item">
+                Friends
+            </a>
+        </div>
+
     </div>
-    <div class="field">
-        <label>Last Name</label>
-        <input type="text" name="last-name" placeholder="Last Name">
-    </div>
-    <div class="field">
-        <div class="ui checkbox">
-            <input type="checkbox" tabindex="0" class="hidden">
-            <label>I agree to the Terms and Conditions</label>
-<div class="ui inverted menu">
-  <a class="active item">
-    Home
-  </a>
-  <a class="item">
-    Messages
-  </a>
-  <a class="item">
-    Friends
-  </a>
 </div>
-
-
-<div id="home">
-  <div class="ui container">
-    <div class="ui segment">
-      <div class="ui two column very relaxed grid">
-        <div class="column ">
-          <div class="ui card">
-            <div class="content">
-              <i class="right floated like icon"></i>
-              <i class="right floated star icon"></i>
-              <div class="header">Cute Dog</div>
-              <div class="description">
-                <p></p>
-              </div>
-            </div>
-            <div class="extra content">
-              <span class="left floated like">
-                <i class="like icon"></i>
-                Like
-              </span>
-              <span class="right floated star">
-                <i class="star icon"></i>
-                Favorite
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="ui card">
-            <div class="content">
-              <i class="right floated like icon"></i>
-              <i class="right floated star icon"></i>
-              <div class="header">{{{header}}}</div>
-              <div class="description">
-                <p>{{{cardContent}}}</p>
-              </div>
-            </div>
-            <div class="extra content">
-              <span class="left floated like">
-                <i class="like icon"></i>
-                Like
-              </span>
-              <span class="right floated star">
-                <i class="star icon"></i>
-                Favorite
-              </span>
-            </div>
-          </div>
-        </div>
+<form class="ui form" action="/login" method="post">
+    <div class="field">
+        <label>Username:</label>
+        <input type="text" name="username" />
     </div>
-
-    <button class="ui button" type="submit">Submit</button>
+    <div class="field">
+        <label>Password:</label>
+        <input type="password" name="password" />
+    </div>
+    <div>
+        <input type="submit" value="Log In" id="login" />
+    </div>
 </form>
+
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../public/js/index.js"></script>
 <!-- You MUST include jQuery before Fomantic -->
@@ -83,26 +38,12 @@
 <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
 <script src="/semantic/dist/semantic.min.js"></script>
 
-  </div>
 
 
-<form action="/login" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username"/>
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password"/>
-    </div>
-    <div>
-        <input type="submit" value="Log In" id = "login"/>
-    </div>
-</form>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../public/js/index.js"></script>
-  <!-- You MUST include jQuery before Fomantic -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
-  <script src="/semantic/dist/semantic.min.js"></script>
+<!-- You MUST include jQuery before Fomantic -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="/semantic/dist/semantic.min.js"></script>
