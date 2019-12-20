@@ -4,12 +4,8 @@ const db = require("../models");
 const htmlRoutes = new Router();
 
 htmlRoutes.get("/", async (req, res) => {
-  const dbExamples = await db.Example.findAll({});
 
-  res.render("index", {
-    msg: "Welcome!",
-    examples: dbExamples
-  });
+  res.render("index");
 });
 
 // Load profile for user
@@ -20,9 +16,9 @@ htmlRoutes.get("/user/:id", async (req, res) => {
     }
   });
 
-  res.render("example", {
+  res.render("profile", {
     // Replace this shit with the profile view
-    example: dbUser
+    user: dbUser
   });
 });
 
