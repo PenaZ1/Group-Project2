@@ -5,7 +5,7 @@ const htmlRoutes = new Router();
 
 htmlRoutes.get("/", async (req, res) => {
 
-  res.render("index");
+  res.render("signUp");
 });
 
 // Load profile for user
@@ -16,17 +16,11 @@ htmlRoutes.get("/user/:id", async (req, res) => {
     }
   });
 
-  res.render("profile", {
+  res.render("example", {
     // Replace this shit with the profile view
-    user: dbUser
+    example: dbUser
   });
 });
-
-htmlRoutes.get("/signup", async (req, res) => {
-
-  res.render("signUp");
-});
-
 
 // Render 404 page for any unmatched routes
 htmlRoutes.get("*", async (req, res) => {
@@ -34,4 +28,3 @@ htmlRoutes.get("*", async (req, res) => {
 });
 
 module.exports = htmlRoutes;
-
