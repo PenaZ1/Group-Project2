@@ -16,9 +16,9 @@ htmlRoutes.get("/user/:id", async (req, res) => {
     }
   });
 
-  res.render("example", {
+  res.render("profile", {
     // Replace this shit with the profile view
-    example: dbUser
+    user: dbUser
   });
 });
 

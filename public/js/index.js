@@ -1,4 +1,6 @@
-$("#login").on(click, function(event) {
+
+$("#login").on("click", function(event) {
+
   event.preventDefault();
   $.ajax({
     headers: {
@@ -12,9 +14,9 @@ $("#login").on(click, function(event) {
     })
   })
     .then(function(data) {
-      sessionStorage.setItem("id", data.session.id);
-      sessionStorage.setItem("password", data.session.password);
-      window.location.href = data.url;
+      sessionStorage.setItem("id", data.session.id); // Important
+      sessionStorage.setItem("password", data.session.password); // Important
+      window.location.href = data.url; // Important
     })
     .catch(err => {
       console.log(err.statusCode());
