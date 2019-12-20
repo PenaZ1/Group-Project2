@@ -4,12 +4,7 @@ const db = require("../models");
 const htmlRoutes = new Router();
 
 htmlRoutes.get("/", async (req, res) => {
-  const dbExamples = await db.Example.findAll({});
-
-  res.render("index", {
-    msg: "Welcome!",
-    examples: dbExamples
-  });
+  res.render("index");
 });
 
 // Load example page and pass in an example by id
@@ -23,7 +18,11 @@ htmlRoutes.get("/user/:id", async (req, res) => {
   res.render("user", {
     example: dbUser // Replace this shit with the profile view
   });
-  
+});
+
+//load feed page upon login needs someone to make sure it's working
+htmlRoutes.get("/feed", async (req, res) => {
+  res.render("feed");
 });
 
 // Render 404 page for any unmatched routes
