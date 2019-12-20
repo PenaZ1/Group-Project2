@@ -7,21 +7,19 @@ const login = new Router();
 
 passport.use(
   new LocalStrategy((username, password, done) => {
-    db.User.findOne(
-      { where: { username: username, password: password } },
-      function(err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false, { message: "Incorrect username." });
-        }
-        if (!user.validPassword(password)) {
-          return done(null, false, { message: "Incorrect password." });
-        }
-        return done(null, user);
+    db.User.findOne({ where: { username: username } }).then((user, err) => {
+      //console.log(err,user);
+      if (err) {
+        return done(err);
       }
-    );
+      if (!user) {
+        return done(null, false, { message: "Incorrect username." });
+      }
+      if (user.dataValues.password !== password) {
+        return done(null, false, { message: "Incorrect password." });
+      }
+      return done(null, user);
+    });
   })
 );
 
@@ -30,7 +28,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  db.users.findById(id, function(err, user) {
+  db.User.findById(id, function(err, user) {
     if (err) {
       return done(err);
     }
@@ -38,30 +36,17 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-login.post("/login", async (req, res, next) => {
-  const dbExamples = await db.Example.findAll({});
-
-  passport.authenticate("local", (err, user) => {
-    if (err) {
-      return next(err);
+login.post("/login", passport.authenticate("local"), (req, res) => {
+  // req.user contains the user
+  //console.log(req.session.passport.user);
+  //req.session.id = req.user.id;
+  return res.status(200).json({
+    url: "/user/" + req.user.id,
+    session: {
+      id: req.user.dataValues.id,
+      password: req.user.dataValues.password
     }
-    if (!user) {
-      return res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    }
-    req.logIn(user, function(err) {
-      if (err) {
-        return next(err);
-      }
-      // a res.redirect also works
-      return res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  })(req, res, next);
+  });
 });
 
 module.exports = login;
