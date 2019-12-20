@@ -28,7 +28,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  db.users.findById(id, function(err, user) {
+  db.User.findById(id, function(err, user) {
     if (err) {
       return done(err);
     }
@@ -38,7 +38,15 @@ passport.deserializeUser(function(id, done) {
 
 login.post("/login", passport.authenticate("local"), (req, res) => {
   // req.user contains the user
-  return res.status(200).json({ url: "/user/" + req.user.id });
+  //console.log(req.session.passport.user);
+  //req.session.id = req.user.id;
+  return res.status(200).json({
+    url: "/user/" + req.user.id,
+    session: {
+      id: req.user.dataValues.id,
+      password: req.user.dataValues.password
+    }
+  });
 });
 
 module.exports = login;

@@ -112,8 +112,9 @@ $("#login").on("click", function(event) {
     })
   })
     .then(function(data) {
+      sessionStorage.setItem("id", data.session.id);
+      sessionStorage.setItem("password", data.session.password);
       window.location.href = data.url;
-      console.log(data.url);
     })
     .catch(err => {
       console.log(err.statusCode());
