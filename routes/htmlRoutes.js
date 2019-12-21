@@ -25,8 +25,8 @@ htmlRoutes.get("/user/:id", async (req, res) => {
 });
 //load feed page upon login needs someone to make sure it's working
 htmlRoutes.get("/feed", async (req, res) => {
+  console("asdf");
   res.render("feed");
-
 });
 
 htmlRoutes.get("/signup", async (req, res) => {
