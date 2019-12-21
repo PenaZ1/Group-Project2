@@ -1,4 +1,3 @@
-
 $("#login").on("click", function(event) {
 
   event.preventDefault();
@@ -36,7 +35,7 @@ $("#register").on("click", function(event) {
     })
   })
     .then(data => {
-      if (data.err){
+      if (data.err) {
         alert(data.err);
       } else {
         window.location.href = data.url;

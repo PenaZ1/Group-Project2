@@ -1,14 +1,9 @@
 const Router = require("express").Router;
 const db = require("../models");
 
-const postRoutes = new Router();
+const createPost = new Router();
 
-postRoutes.get("/posts", async (req, res) => {
-  const Posts = await db.Post.findAll({});
-  res.json(Posts);
-});
-
-postRoutes.post("/post", async (req, res) => {
+createPost.post("/post", async (req, res) => {
   const user = db.User.findOne({
     where: { id: req.body.id, password: req.body.password }
   }).then(() => {
@@ -20,4 +15,4 @@ postRoutes.post("/post", async (req, res) => {
   });
 });
 
-module.exports = postRoutes;
+module.exports = createPost;

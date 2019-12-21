@@ -7,6 +7,10 @@ htmlRoutes.get("/", async (req, res) => {
   res.render("index");
 });
 
+htmlRoutes.get("/feed", async (req, res) => {
+  res.render("feed");
+});
+
 // Load profile for user
 htmlRoutes.get("/user/:id", async (req, res) => {
   const dbUser = await db.User.findOne({
