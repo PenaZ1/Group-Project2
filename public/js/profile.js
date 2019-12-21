@@ -13,7 +13,7 @@ $("#post").on("click", function(event) {
     })
   })
     .then(data => {
-      if (data.err){
+      if (data.err) {
         alert(data.err);
       } else {
         //window.location.href = data.url;
@@ -24,3 +24,9 @@ $("#post").on("click", function(event) {
       console.log(err.statusCode());
     });
 });
+$("#logout").on("click", function() {
+  sessionStorage.setItem("id", "");
+  sessionStorage.setItem("password", "");
+  window.location.href = "/";
+});
+

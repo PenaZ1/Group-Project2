@@ -1,5 +1,4 @@
 $("#login").on("click", function(event) {
-
   event.preventDefault();
   $.ajax({
     headers: {
@@ -18,7 +17,9 @@ $("#login").on("click", function(event) {
       window.location.href = data.url; // Important
     })
     .catch(err => {
-      console.log(err.statusCode());
+      if (err.statusCode().status === 401){
+        $("#loginError").text("Invalid username or password");
+      }
     });
 });
 $("#register").on("click", function(event) {
@@ -45,3 +46,17 @@ $("#register").on("click", function(event) {
       console.log(err.statusCode());
     });
 });
+
+$("#user").on("click", (event) => {
+  event.preventDefault()
+  console.log("clicked");
+  
+    window.location.href = `http://localhost:3000/user/${sessionStorage.getItem("id")}`;
+    //  $.ajax({
+    //     type: "GET",
+    //     url: `/user/${sessionStorage.getItem("id")}`
+    //   }).then(response, () => {
+  
+    //   });
+  });
+  
