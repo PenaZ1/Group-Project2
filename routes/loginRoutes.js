@@ -9,9 +9,6 @@ const login = new Router();
 passport.use(
   new LocalStrategy((username, password, done) => {
     db.User.findOne({ where: { username: username } }).then((user, err) => {
-      console.log(user.dataValues.password);
-      console.log(bcrypt.hashSync(password, 10));
-      //console.log(err,user);
       if (err) {
         return done(err);
       }

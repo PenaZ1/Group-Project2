@@ -24,7 +24,7 @@ $("#post").on("click", function(event) {
       console.log(err.statusCode());
     });
 });
-$("#logout").on("click",function(){
+$("#logout").on("click", function() {
   sessionStorage.setItem("id", "");
   sessionStorage.setItem("password", "");
   window.location.href = "/";
