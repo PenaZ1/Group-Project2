@@ -46,3 +46,17 @@ $("#register").on("click", function(event) {
       console.log(err.statusCode());
     });
 });
+
+$("#user").on("click", (event) => {
+  event.preventDefault()
+  console.log("clicked");
+  
+    window.location.href = `http://localhost:3000/user/${sessionStorage.getItem("id")}`;
+    //  $.ajax({
+    //     type: "GET",
+    //     url: `/user/${sessionStorage.getItem("id")}`
+    //   }).then(response, () => {
+  
+    //   });
+  });
+  

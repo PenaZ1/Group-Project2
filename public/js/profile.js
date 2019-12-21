@@ -13,7 +13,7 @@ $("#post").on("click", function(event) {
     })
   })
     .then(data => {
-      if (data.err){
+      if (data.err) {
         alert(data.err);
       } else {
         //window.location.href = data.url;
@@ -29,3 +29,4 @@ $("#logout").on("click", function() {
   sessionStorage.setItem("password", "");
   window.location.href = "/";
 });
+
