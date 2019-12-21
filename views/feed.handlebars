@@ -1,44 +1,56 @@
 {{>nav}}
 
-
 <div class="ui segment">
   <div class="ui two column very relaxed grid">
     <div class="column">
+      {{#each post}}
+      <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
       <div class="ui raised link card">
-        <div class="content">
-          <div class="header">Cute Dog</div>
-          <div class="meta">
-            <span class="category">Animals</span>
-          </div>
-          <div class="description">
-            <p></p>
-          </div>
-        </div>
         <div class="extra content">
           <div class="right floated author">
-            <img class="ui avatar image" src="/images/avatar/small/matt.jpg"> Matt
+            <img class="ui avatar image" src="{{this.imgURL}}">
+            {{this.postUser}}
+          </div>
+        </div>
+        <div class="content">
+          <div class="meta">
+            <span class="category">{{this.postCategory}}</span>
+          </div>
+          <div class="description">
+            <p>{{this.postContent}}</p>
           </div>
         </div>
       </div>
-      <p></p>
-      <p></p>
-      <p></p>
+      {{/each}}
     </div>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
     <div class="column">
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
+      {{#each post}}
+      <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
+      <div class="ui raised link card">
+        <div class="extra content">
+          <div class="right floated author">
+            <img class="ui avatar image" src="{{this.imgURL}}">
+            {{this.postUser}}
+          </div>
+        </div>
+        <div class="content">
+          <div class="meta">
+            <span class="category">{{this.postCategory}}</span>
+            <!-- will need to make sure that the category is able to put the appropriate post in
+            the right side-->
+          </div>
+          <div class="description">
+            <p>{{this.postContent}}</p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
     </div>
   </div>
   <div class="ui vertical divider">
     and
   </div>
 </div>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- You MUST include jQuery before Fomantic -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
-<script src="/semantic/dist/semantic.min.js"></script>
-<script src="../public/js/index.js"></script>
