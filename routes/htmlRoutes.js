@@ -31,10 +31,8 @@ htmlRoutes.get("/feed", async (req, res) => {
 });
 
 htmlRoutes.get("/signup", async (req, res) => {
-
   res.render("signUp");
 });
-
 
 // Render 404 page for any unmatched routes
 htmlRoutes.get("*", async (req, res) => {
