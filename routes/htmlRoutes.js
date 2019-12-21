@@ -4,8 +4,11 @@ const db = require("../models");
 const htmlRoutes = new Router();
 
 htmlRoutes.get("/", async (req, res) => {
-
   res.render("index");
+});
+
+htmlRoutes.get("/feed", async (req, res) => {
+  res.render("feed");
 });
 
 // Load profile for user
