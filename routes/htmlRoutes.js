@@ -7,22 +7,30 @@ htmlRoutes.get("/", async (req, res) => {
   res.render("index");
 });
 
-// Load example page and pass in an example by id
+htmlRoutes.get("/feed", async (req, res) => {
+  res.render("feed");
+});
+
+// Load profile for user
 htmlRoutes.get("/user/:id", async (req, res) => {
-  const dbUser = await db.Example.findOne({
+  const dbUser = await db.User.findOne({
     where: {
-      id: req.params.id
+      id: parseInt(req.params.id)
     }
   });
 
-  res.render("user", {
-    example: dbUser // Replace this shit with the profile view
+  res.render("profile", {
+    user: dbUser
   });
 });
-
 //load feed page upon login needs someone to make sure it's working
 htmlRoutes.get("/feed", async (req, res) => {
   res.render("feed");
+
+});
+
+htmlRoutes.get("/signup", async (req, res) => {
+  res.render("signUp");
 });
 
 // Render 404 page for any unmatched routes
