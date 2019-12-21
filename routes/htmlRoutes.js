@@ -4,7 +4,6 @@ const db = require("../models");
 const htmlRoutes = new Router();
 
 htmlRoutes.get("/", async (req, res) => {
-
   res.render("index");
 });
 
@@ -20,6 +19,11 @@ htmlRoutes.get("/user/:id", async (req, res) => {
     // Replace this shit with the profile view
     user: dbUser
   });
+  
+//load feed page upon login needs someone to make sure it's working
+htmlRoutes.get("/feed", async (req, res) => {
+  res.render("feed");
+
 });
 
 htmlRoutes.get("/signup", async (req, res) => {
