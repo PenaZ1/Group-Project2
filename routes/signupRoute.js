@@ -4,7 +4,8 @@ const db = require("../models");
 const htmlRoutes = new Router();
 
 htmlRoutes.get("/", async (req, res) => {
-  res.render("index");
+
+  res.render("signUp");
 });
 
 // Load profile for user
@@ -15,22 +16,11 @@ htmlRoutes.get("/user/:id", async (req, res) => {
     }
   });
 
-  res.render("profile", {
+  res.render("example", {
     // Replace this shit with the profile view
-    user: dbUser
+    example: dbUser
   });
-  
-//load feed page upon login needs someone to make sure it's working
-htmlRoutes.get("/feed", async (req, res) => {
-  res.render("feed");
-
 });
-
-htmlRoutes.get("/signup", async (req, res) => {
-
-  res.render("signUp");
-});
-
 
 // Render 404 page for any unmatched routes
 htmlRoutes.get("*", async (req, res) => {
@@ -38,4 +28,3 @@ htmlRoutes.get("*", async (req, res) => {
 });
 
 module.exports = htmlRoutes;
-
