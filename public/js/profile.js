@@ -29,4 +29,3 @@ $("#logout").on("click", function() {
   sessionStorage.setItem("password", "");
   window.location.href = "/";
 });
-
