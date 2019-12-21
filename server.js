@@ -28,7 +28,7 @@ app.use(passport.session());
 
 // Associations
 db.User.hasMany(db.Post);
-//db.User.hasMany(db.User, { as: "followers" });
+// db.User.hasMany(db.User, { as: "followers" });
 
 // Routes
 app.use(routes);

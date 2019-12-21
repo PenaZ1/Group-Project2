@@ -44,7 +44,7 @@ passport.deserializeUser(function(id, done) {
 login.post("/login", passport.authenticate("local"), (req, res) => {
   // req.user contains the user
   return res.status(200).json({
-    url: "/user/" + req.user.id,
+    url: "/feed",
     session: {
       id: req.user.dataValues.id,
       password: req.user.dataValues.password

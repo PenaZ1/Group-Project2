@@ -7,10 +7,6 @@ htmlRoutes.get("/", async (req, res) => {
   res.render("index");
 });
 
-htmlRoutes.get("/feed", async (req, res) => {
-  res.render("feed");
-});
-
 // Load profile for user
 htmlRoutes.get("/user/:id", async (req, res) => {
   const dbUser = await db.User.findOne({
@@ -25,8 +21,21 @@ htmlRoutes.get("/user/:id", async (req, res) => {
 });
 //load feed page upon login needs someone to make sure it's working
 htmlRoutes.get("/feed", async (req, res) => {
-  res.render("feed");
-
+  const posts = [];
+  const postModels = await db.Post.findAll({
+    order: [["id", "DESC"]],
+    limit: 10
+  });
+  console.log(postModels[0].dataValues.text);
+  for (var i = 0; i < postModels.length; i++) {
+    const user = await db.User.findByPk(postModels[i].dataValues.UserId);
+    posts.push({
+      postUser: user.username,
+      postContent: postModels[i].dataValues.text
+    });
+  }
+  //const postUser = await db.User.findAll({where: { id: UserId }})
+  res.render("feed", { posts });
 });
 
 htmlRoutes.get("/signup", async (req, res) => {
