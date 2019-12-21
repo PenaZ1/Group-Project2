@@ -20,7 +20,6 @@ htmlRoutes.get("/user/:id", async (req, res) => {
   });
 
   res.render("profile", {
-    // Replace this shit with the profile view
     user: dbUser
   });
 });
