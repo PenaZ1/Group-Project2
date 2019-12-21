@@ -42,4 +42,3 @@ htmlRoutes.get("*", async (req, res) => {
 });
 
 module.exports = htmlRoutes;
-
