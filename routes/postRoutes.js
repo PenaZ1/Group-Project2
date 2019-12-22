@@ -10,7 +10,8 @@ createPost.post("/post", async (req, res) => {
     if (!user) {
       return res.json({ err: "User not logged in!" });
     }
-    db.Post.create({ text: req.body.text, UserId: req.body.id });
+    var nsfw = req.body.nsfw === "true";
+    db.Post.create({ text: req.body.text, UserId: req.body.id, nsfw: nsfw });
     res.end();
   });
 });
