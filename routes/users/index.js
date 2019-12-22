@@ -9,13 +9,12 @@ userRoutes
   .get(async (req, res) => {
     const Users = await db.User.findAll({
       attributes: {
-        exclude: ["password"]
+        exclude: ["password", "email"]
       }
     });
     res.json(Users);
   });
 
-  
 // Delete a user by id
 // This should require authentication
 /*
