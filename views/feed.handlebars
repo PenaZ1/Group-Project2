@@ -1,9 +1,12 @@
 {{>nav}}
+
 <div class="ui segment">
   <div class="ui two column very relaxed grid">
     <div class="column">
+      <a class="ui red ribbon label">NSFW</a>
       {{#each posts}}
       <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
+      <div></div>
       <div class="ui raised link card">
         <div class="extra content">
           <div class="right floated author">
@@ -16,7 +19,24 @@
             <span class="category">{{this.postCategory}}</span>
           </div>
           <div class="description">
-            <p>{{this.postContent}}</p>
+            <p>{{this.postContent}}, {{this.date}}</p>
+          </div>
+          <hr>
+          <div class="ui form">
+            <div class="field">
+              <label>Leave a comment!</label>
+              <textarea rows="2"></textarea>
+            </div>
+          </div>
+          <div class="extra content">
+            <span class="left floated like">
+              <i class="like icon"></i>
+              Like
+            </span>
+            <span class="right floated star">
+              <i class="star icon"></i>
+              Favorite
+            </span>
           </div>
         </div>
       </div>
@@ -26,6 +46,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
     <div class="column">
+      <a class="ui blue ribbon label">SFW</a>
       {{#each posts}}
       <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
       <div class="ui raised link card">
@@ -44,6 +65,23 @@
           <div class="description">
             <p>{{this.postContent}}</p>
           </div>
+        </div>
+        <hr>
+        <div class="ui form">
+          <div class="field">
+            <label>Leave a comment!</label>
+            <textarea rows="2"></textarea>
+          </div>
+        </div>
+        <div class="extra content">
+          <span class="left floated like">
+            <i class="like icon"></i>
+            Like
+          </span>
+          <span class="right floated star">
+            <i class="star icon"></i>
+            Favorite
+          </span>
         </div>
       </div>
       {{/each}}
