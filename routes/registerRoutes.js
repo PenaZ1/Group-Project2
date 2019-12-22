@@ -10,7 +10,8 @@ register.post("/register", async (req, res) => {
   if (!newUser) {
     const newUser = await db.User.create({
       username: req.body.username,
-      password: bcrypt.hashSync(req.body.password, 10)
+      password: bcrypt.hashSync(req.body.password, 10),
+      email: req.body.username
     });
     console.log(bcrypt.hashSync(req.body.password, 10));
     return res.status(201).json({ url: "/user/" + newUser.id });

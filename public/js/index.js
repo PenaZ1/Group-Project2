@@ -24,6 +24,9 @@ $("#login").on("click", function(event) {
 });
 $("#register").on("click", function(event) {
   event.preventDefault();
+  if (!$("#rusername").val() || !$("#rpassword").val() || !$("#remail").val()) {
+    return $("#rerror").text("A required field is empty.");
+  }
   $.ajax({
     headers: {
       "Content-Type": "application/json"
@@ -32,7 +35,8 @@ $("#register").on("click", function(event) {
     url: "/register",
     data: JSON.stringify({
       username: $("#rusername").val(),
-      password: $("#rpassword").val()
+      password: $("#rpassword").val(),
+      email: $("#remail").val()
     })
   })
     .then(data => {
@@ -47,16 +51,16 @@ $("#register").on("click", function(event) {
     });
 });
 
-$("#user").on("click", (event) => {
-  event.preventDefault()
+$("#user").on("click", event => {
+  event.preventDefault();
   console.log("clicked");
-  
-    window.location.href = `http://localhost:3000/user/${sessionStorage.getItem("id")}`;
-    //  $.ajax({
-    //     type: "GET",
-    //     url: `/user/${sessionStorage.getItem("id")}`
-    //   }).then(response, () => {
-  
-    //   });
-  });
-  
+
+  window.location.href = `http://localhost:3000/user/${sessionStorage.getItem("id"
+  )}`;
+  //  $.ajax({
+  //     type: "GET",
+  //     url: `/user/${sessionStorage.getItem("id")}`
+  //   }).then(response, () => {
+
+  //   });
+});

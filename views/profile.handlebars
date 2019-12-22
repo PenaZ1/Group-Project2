@@ -1,31 +1,96 @@
-<div class="container">
- {{>nav}}
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">User</h5>
-          <p>
-            <strong>ID</strong>: {{user.id}}</p>
-          <p>
-          <p>
-            <strong>Username</strong>: {{user.username}}</p>
-          <p>
-            <a href="/">← Back To Home</a>
-            
+<style>
+  #profileBG {
+    background-color: burlywood;
+
+  }
+
+  #centerContent{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+</style>
+
+
+<div id="profileBG">
+  <div class="container">
+    {{>nav}}
+    <a href="/">← Back To Home</a>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div class="card mt-4">
+          <div class="card-body">
+            {{!-- <h5 class="card-title">User</h5> --}}
+            <p hidden>
+              <strong>ID</strong>: {{user.id}}
+            </p>
+
+            <p>
+              <strong>I am</strong>: {{user.username}}
+            </p>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+
+  <form action="/posts" method="post" id="centerContent">
+
+    <div>
+      {{!-- <label>Create post:</label> --}}
+      <button>Create My Post</button>
+
+    </div>
+
+    <div>
+      {{!-- <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea> --}}
+
+      <div class="ui segment">
+        <p></p>
+      </div>
+
+      <input type="submit" value="Create!" id="post" />
+    </div>
+
+  </form>
 </div>
+
 <form action="/posts" method="post">
   <div>
       <label>Create post:</label>
   </div>
   <div>
       <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
+      
+<div class="ui form">
+  <div class="inline fields">
+    <label for="fruit">Select your favorite fruit:</label>
+    <div class="field">
+      <div class="ui radio checkbox checked">
+        <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
+        <label>NSFW</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
+        <label>SFW</label>
+      </div>
+    </div>
+    </div>
+</div>
+
       <input type="submit" value="Post" id="post"/>
   </div>
 </form>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- You MUST include jQuery before Fomantic -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="/semantic/dist/semantic.min.js"></script>
 <script src="/js/profile.js"></script>

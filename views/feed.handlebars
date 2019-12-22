@@ -5,6 +5,8 @@
     <div class="column">
       <a class="ui red ribbon label">NSFW</a>
       {{#each posts}}
+      {{#if nsfw}}
+      
       <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
       <div></div>
       <div class="ui raised link card">
@@ -40,6 +42,8 @@
           </div>
         </div>
       </div>
+        {{/if}}
+
       {{/each}}
     </div>
 
@@ -48,6 +52,7 @@
     <div class="column">
       <a class="ui blue ribbon label">SFW</a>
       {{#each posts}}
+      {{#unless nsfw}}
       <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
       <div class="ui raised link card">
         <div class="extra content">
@@ -84,10 +89,12 @@
           </span>
         </div>
       </div>
+      {{/unless}}
       {{/each}}
     </div>
   </div>
   <div class="ui vertical divider">
     and
   </div>
+  
 </div>
