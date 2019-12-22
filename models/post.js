@@ -1,18 +1,15 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define(
-    "Post",
-    {
-      text: DataTypes.STRING,
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      UserId: DataTypes.INTEGER
+  const Post = sequelize.define("Post", {
+    text: DataTypes.STRING,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
     },
-    {}
-  );
+    nsfw: DataTypes.BOOLEAN,
+    UserId: DataTypes.INTEGER
+  });
   Post.associate = function(_models) {
     // associations can be defined here
   };
