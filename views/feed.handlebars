@@ -4,6 +4,8 @@
   <div class="ui two column very relaxed grid">
     <div class="column">
       {{#each posts}}
+      {{#if nsfw}}
+      
       <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
       <div class="ui raised link card">
         <div class="extra content">
@@ -31,6 +33,8 @@
           </div>
         </div>
       </div>
+        {{/if}}
+
       {{/each}}
     </div>
 
@@ -38,6 +42,7 @@
 
     <div class="column">
       {{#each posts}}
+      {{#unless nsfw}}
       <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
       <div class="ui raised link card">
         <div class="extra content">
@@ -67,10 +72,12 @@
           </span>
         </div>
       </div>
+      {{/unless}}
       {{/each}}
     </div>
   </div>
   <div class="ui vertical divider">
     and
   </div>
+  
 </div>

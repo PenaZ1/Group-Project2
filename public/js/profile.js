@@ -1,5 +1,7 @@
 $("#post").on("click", function(event) {
   event.preventDefault();
+  let radioValue = $("input[name='nsfw']:checked").val();
+  console.log(radioValue);
   $.ajax({
     headers: {
       "Content-Type": "application/json"
@@ -29,3 +31,5 @@ $("#logout").on("click", function() {
   sessionStorage.setItem("password", "");
   window.location.href = "/";
 });
+$('.ui.radio.checkbox').checkbox()
+;

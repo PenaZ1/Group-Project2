@@ -28,6 +28,7 @@ htmlRoutes.get("/feed", async (req, res) => {
   });
   for (var i = 0; i < postModels.length; i++) {
     const user = await db.User.findByPk(postModels[i].dataValues.UserId);
+    console.log(user)
     posts.push({
       postUser: user.username,
       postContent: postModels[i].dataValues.text,
