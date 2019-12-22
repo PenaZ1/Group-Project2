@@ -31,7 +31,8 @@ htmlRoutes.get("/feed", async (req, res) => {
     posts.push({
       postUser: user.username,
       postContent: postModels[i].dataValues.text,
-      imgURL: "/images/logoprofile.png"
+      imgURL: "/images/logoprofile.png",
+      nsfw: postModels[i].dataValues.nsfw
     });
   }
   res.render("feed", { posts });

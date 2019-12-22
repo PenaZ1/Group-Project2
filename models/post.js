@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      UserId: DataTypes.INTEGER
+      UserId: DataTypes.INTEGER,
+      nsfw: DataTypes.BOOLEAN
     },
     {}
   );
