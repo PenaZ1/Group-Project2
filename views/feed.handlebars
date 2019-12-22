@@ -1,4 +1,5 @@
 {{>nav}}
+
 <div class="ui segment">
   <div class="ui two column very relaxed grid">
     <div class="column">
@@ -18,7 +19,17 @@
             <span class="category">{{this.postCategory}}</span>
           </div>
           <div class="description">
-            <p>{{this.postContent}}</p>
+            <p>{{this.postContent}}, {{this.date}}</p>
+          </div>
+          <div class="extra content">
+            <span class="left floated like">
+              <i class="like icon"></i>
+              Like
+            </span>
+            <span class="right floated star">
+              <i class="star icon"></i>
+              Favorite
+            </span>
           </div>
         </div>
       </div>
@@ -49,6 +60,16 @@
           <div class="description">
             <p>{{this.postContent}}</p>
           </div>
+        </div>
+        <div class="extra content">
+          <span class="left floated like">
+            <i class="like icon"></i>
+            Like
+          </span>
+          <span class="right floated star">
+            <i class="star icon"></i>
+            Favorite
+          </span>
         </div>
       </div>
       {{/unless}}

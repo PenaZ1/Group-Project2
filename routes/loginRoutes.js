@@ -47,7 +47,8 @@ login.post("/login", passport.authenticate("local"), (req, res) => {
     url: "/feed",
     session: {
       id: req.user.dataValues.id,
-      password: req.user.dataValues.password
+      password: req.user.dataValues.password,
+      imgURL: "/images/logoprofile.png"
     }
   });
 });

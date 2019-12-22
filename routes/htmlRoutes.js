@@ -26,16 +26,15 @@ htmlRoutes.get("/feed", async (req, res) => {
     order: [["id", "DESC"]],
     limit: 10
   });
-  console.log(postModels[0].dataValues.text);
   for (var i = 0; i < postModels.length; i++) {
     const user = await db.User.findByPk(postModels[i].dataValues.UserId);
     console.log(user)
     posts.push({
       postUser: user.username,
-      postContent: postModels[i].dataValues.text
+      postContent: postModels[i].dataValues.text,
+      imgURL: "/images/logoprofile.png"
     });
   }
-  //const postUser = await db.User.findAll({where: { id: UserId }})
   res.render("feed", { posts });
 });
 
