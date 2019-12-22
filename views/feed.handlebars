@@ -1,0 +1,93 @@
+{{>nav}}
+
+<div class="ui segment">
+  <div class="ui two column very relaxed grid">
+    <div class="column">
+      <a class="ui red ribbon label">NSFW</a>
+      {{#each posts}}
+      <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
+      <div></div>
+      <div class="ui raised link card">
+        <div class="extra content">
+          <div class="right floated author">
+            <img class="ui avatar image" src="{{this.imgURL}}">
+            {{this.postUser}}
+          </div>
+        </div>
+        <div class="content">
+          <div class="meta">
+            <span class="category">{{this.postCategory}}</span>
+          </div>
+          <div class="description">
+            <p>{{this.postContent}}, {{this.date}}</p>
+          </div>
+          <hr>
+          <div class="ui form">
+            <div class="field">
+              <label>Leave a comment!</label>
+              <textarea rows="2"></textarea>
+            </div>
+          </div>
+          <div class="extra content">
+            <span class="left floated like">
+              <i class="like icon"></i>
+              Like
+            </span>
+            <span class="right floated star">
+              <i class="star icon"></i>
+              Favorite
+            </span>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+    <div class="column">
+      <a class="ui blue ribbon label">SFW</a>
+      {{#each posts}}
+      <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
+      <div class="ui raised link card">
+        <div class="extra content">
+          <div class="right floated author">
+            <img class="ui avatar image" src="{{this.imgURL}}">
+            {{this.postUser}}
+          </div>
+        </div>
+        <div class="content">
+          <div class="meta">
+            <span class="category">{{this.postCategory}}</span>
+            <!-- will need to make sure that the category is able to put the appropriate post in
+            the right side-->
+          </div>
+          <div class="description">
+            <p>{{this.postContent}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="ui form">
+          <div class="field">
+            <label>Leave a comment!</label>
+            <textarea rows="2"></textarea>
+          </div>
+        </div>
+        <div class="extra content">
+          <span class="left floated like">
+            <i class="like icon"></i>
+            Like
+          </span>
+          <span class="right floated star">
+            <i class="star icon"></i>
+            Favorite
+          </span>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="ui vertical divider">
+    and
+  </div>
+</div>

@@ -4,26 +4,41 @@ const db = require("../models");
 const htmlRoutes = new Router();
 
 htmlRoutes.get("/", async (req, res) => {
-  const dbExamples = await db.Example.findAll({});
-
-  res.render("index", {
-    msg: "Welcome!",
-    examples: dbExamples
-  });
+  res.render("index");
 });
 
-// Load example page and pass in an example by id
+// Load profile for user
 htmlRoutes.get("/user/:id", async (req, res) => {
-  const dbUser = await db.Example.findOne({
+  const dbUser = await db.User.findOne({
     where: {
-      id: req.params.id
+      id: parseInt(req.params.id)
     }
   });
 
-  res.render("user", {
-    example: dbUser // Replace this shit with the profile view
+  res.render("profile", {
+    user: dbUser
   });
-  
+});
+//load feed page upon login needs someone to make sure it's working
+htmlRoutes.get("/feed", async (req, res) => {
+  const posts = [];
+  const postModels = await db.Post.findAll({
+    order: [["id", "DESC"]],
+    limit: 10
+  });
+  for (var i = 0; i < postModels.length; i++) {
+    const user = await db.User.findByPk(postModels[i].dataValues.UserId);
+    posts.push({
+      postUser: user.username,
+      postContent: postModels[i].dataValues.text,
+      imgURL: "/images/logoprofile.png"
+    });
+  }
+  res.render("feed", { posts });
+});
+
+htmlRoutes.get("/signup", async (req, res) => {
+  res.render("signUp");
 });
 
 // Render 404 page for any unmatched routes

@@ -1,0 +1,42 @@
+<style>
+    #loginContainer {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>
+
+<div id="loginContainer">
+    <div  class="ui raised very padded text container segment">
+        <div class="ui center aligned placeholder segment">
+            {{!-- <div class="ui two column very relaxed stackable grid"> --}}
+            <div class="column">
+
+                <form class="ui form">
+                    <div class="field">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="username" id="rusername">
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="text" name="password" placeholder="password" id="rpassword">
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="text" name="password" placeholder="email@email.com" id="needsID">
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden">
+                            <label>I agree to the Terms and Conditions</label>
+                        </div>
+                    </div>
+                    <button class="ui button" type="submit" id="register">Sign Me Up!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
