@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Post.associate = function(_models) {
+  Post.associate = function (_models) {
     // associations can be defined here
   };
   return Post;
