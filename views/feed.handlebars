@@ -5,7 +5,7 @@
       <a class="ui red ribbon label">NSFW</a>
       {{#each posts}}
       {{#if this.nsfw}}
-      <div class="ui raised link card" id="nsfwcard">
+      <div class="ui raised link card nsfwcard">
         <div class="extra content">
           <div class="right floated author">
             <img class="ui avatar image" src="{{this.imgURL}}">
@@ -47,7 +47,7 @@
       {{#each posts}}
         {{#unless this.nsfw}}
           <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
-          <div class="ui raised link card" id="sfwcard">
+          <div class="ui raised link card sfwcard">
             <div class="extra content">
               <div class="right floated author">
                 <img class="ui avatar image" src="{{this.imgURL}}">
