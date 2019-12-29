@@ -1,5 +1,17 @@
+if (
+  sessionStorage.getItem("accountCreated") &&
+  window.location.pathname === "/"
+) {
+  $("#accountCreated").text("Account has been created.");
+}
+
+if (window.location.pathname === "/signup") {
+  sessionStorage.setItem("accountCreated", false);
+}
+
 $("#login").on("click", function(event) {
   event.preventDefault();
+  sessionStorage.setItem("accountCreated", false);
   $.ajax({
     headers: {
       "Content-Type": "application/json"
@@ -12,9 +24,9 @@ $("#login").on("click", function(event) {
     })
   })
     .then(function(data) {
-      sessionStorage.setItem("id", data.session.id); // Important
-      sessionStorage.setItem("password", data.session.password); // Important
-      window.location.href = data.url; // Important
+      sessionStorage.setItem("id", data.session.id);
+      sessionStorage.setItem("password", data.session.password);
+      window.location.href = data.url;
     })
     .catch(err => {
       if (err.statusCode().status === 401) {
@@ -44,6 +56,8 @@ $("#register").on("click", function(event) {
         alert(data.err);
       } else {
         window.location.href = data.url;
+        console.log("data.url");
+        sessionStorage.setItem("accountCreated", true);
       }
     })
     .catch(err => {

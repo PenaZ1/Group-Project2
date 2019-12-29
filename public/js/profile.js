@@ -1,4 +1,3 @@
-console.log();
 $("#post").on("click", function(event) {
   event.preventDefault();
   $.ajax({
