@@ -26,6 +26,7 @@ $("#login").on("click", function(event) {
     .then(function(data) {
       sessionStorage.setItem("id", data.session.id);
       sessionStorage.setItem("password", data.session.password);
+      sessionStorage.setItem("accountCreated", false);
       window.location.href = data.url;
     })
     .catch(err => {

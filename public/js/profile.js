@@ -28,6 +28,7 @@ $("#post").on("click", function(event) {
 $("#logout").on("click", function() {
   sessionStorage.setItem("id", "");
   sessionStorage.setItem("password", "");
+  sessionStorage.setItem("accountCreated", false);
   window.location.href = "/";
 });
 $(".ui.radio.checkbox").checkbox();
