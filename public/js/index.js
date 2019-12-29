@@ -1,17 +1,20 @@
 if (
-  sessionStorage.getItem("accountCreated") &&
+  sessionStorage.getItem("accountCreated") === "true" &&
   window.location.pathname === "/"
 ) {
   $("#accountCreated").text("Account has been created.");
+  console.log(sessionStorage.getItem("accountCreated"));
+} else {
+  $("#accountCreated").text("");
 }
 
 if (window.location.pathname === "/signup") {
-  sessionStorage.setItem("accountCreated", false);
+  sessionStorage.setItem("accountCreated", "false");
 }
 
 $("#login").on("click", function(event) {
   event.preventDefault();
-  sessionStorage.setItem("accountCreated", false);
+  sessionStorage.setItem("accountCreated", "false");
   $.ajax({
     headers: {
       "Content-Type": "application/json"
@@ -26,7 +29,7 @@ $("#login").on("click", function(event) {
     .then(function(data) {
       sessionStorage.setItem("id", data.session.id);
       sessionStorage.setItem("password", data.session.password);
-      sessionStorage.setItem("accountCreated", false);
+      sessionStorage.setItem("accountCreated", "false");
       window.location.href = data.url;
     })
     .catch(err => {
@@ -58,7 +61,7 @@ $("#register").on("click", function(event) {
       } else {
         window.location.href = data.url;
         console.log("data.url");
-        sessionStorage.setItem("accountCreated", true);
+        sessionStorage.setItem("accountCreated", "true");
       }
     })
     .catch(err => {
