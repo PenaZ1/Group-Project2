@@ -72,10 +72,12 @@ $("#user").on("click", event => {
 
   window.location.href = `http://localhost:3000/user/${sessionStorage.getItem("id"
   )}`;
-  //  $.ajax({
-  //     type: "GET",
-  //     url: `/user/${sessionStorage.getItem("id")}`
-  //   }).then(response, () => {
+});
+
+$("#switchMode").on("click", event => {
+  event.preventDefault();
+  console.log("clicked");
 
   //   });
+  //  {{>sfwfeed}}
 });
