@@ -70,7 +70,8 @@ $("#user").on("click", event => {
   event.preventDefault();
   console.log("clicked");
 
-  window.location.href = `http://localhost:3000/user/${sessionStorage.getItem("id"
+  window.location.href = `http://localhost:3000/user/${sessionStorage.getItem(
+    "id"
   )}`;
 });
 
