@@ -8,11 +8,11 @@ likeRoutes.get("/", async (req, res) => {
   res.json(Likes);
 });
 
-likeRoutes.post("/:postID", async (req, res) => {
+likeRoutes.post("/:PostId", async (req, res) => {
   const Likes = await db.Likes.create({
     checked: true,
     userID: req.session.id,
-    postID: req.params.postID
+    PostId: req.params.PostId
     // front end pass it as postID
   });
   res.redirect("/feed");

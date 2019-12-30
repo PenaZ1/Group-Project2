@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Likes.associate = function(models) {
     Likes.belongsTo(models.Post, {
       foreignKey: {
-        name: "postID"
+        name: "PostId"
       }
     });
   };
