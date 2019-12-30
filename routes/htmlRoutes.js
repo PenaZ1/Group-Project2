@@ -28,7 +28,15 @@ htmlRoutes.get("/feed", async (req, res) => {
     limit: 10
   });
   for (var i = 0; i < postModels.length; i++) {
-    const user = await db.User.findByPk(postModels[i].dataValues.UserId);
+    const user = await db.User.findByPk(postModels[i].dataValues.UserId, {
+      include: [
+        {
+          model: Likes,
+          as: "likes"
+        }
+      ]
+    });
+    // include association with find by Pk
     posts.push({
       postUser: user.username,
       postContent: postModels[i].dataValues.text,
