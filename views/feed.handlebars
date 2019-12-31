@@ -1,4 +1,31 @@
 {{>nav}}
+
+<form action="/posts" method="post">
+  <div>
+      <label>Create post:</label>
+  </div>
+  <div>
+      <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
+      <div class="ui form">
+        <div class="inline fields">
+          <label for="fruit">Select your favorite fruit:</label>
+          <div class="field">
+            <div class="ui radio checkbox checked">
+              <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
+              <label>NSFW</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
+              <label>SFW</label>
+            </div>
+          </div>
+          </div>
+      </div>
+      <input type="submit" value="Post" id="post"/>
+  </div>
+</form>
 <div class="ui segment">
   <div class="ui two column very relaxed grid">
     <div class="column">

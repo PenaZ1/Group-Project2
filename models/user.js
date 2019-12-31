@@ -14,8 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  User.associate = function(_models) {
-    // associations can be defined here
+  User.associate = function(models) {
+    User.hasMany(models.Likes, {
+      onDelete: "cascade"
+    });
   };
   return User;
 };
