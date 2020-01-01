@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 const register = new Router();
 
 register.post("/register", async (req, res) => {
-  console.log(req.body.username);
   newUser = await db.User.findOne({ where: { username: req.body.username } });
   if (!newUser) {
     await db.User.create({
