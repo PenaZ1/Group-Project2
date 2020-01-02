@@ -1,16 +1,16 @@
-$("#post").on("click", function(event) {
+$("#followBtn").click(function(event) {
   event.preventDefault();
+  var foreignUserID = window.location.href.split("/");
+  foreignUserID = foreignUserID.pop();
   $.ajax({
     headers: {
       "Content-Type": "application/json"
     },
     type: "POST",
-    url: "/post",
+    url: "/follow/" + foreignUserID,
     data: JSON.stringify({
-      text: $("#postcontent").val(),
       id: sessionStorage.getItem("id"),
-      password: sessionStorage.getItem("password"),
-      nsfw: $("input[name='nsfw']:checked").val()
+      password: sessionStorage.getItem("password")
     })
   })
     .then(data => {
