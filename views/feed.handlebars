@@ -1,93 +1,112 @@
 {{>nav}}
 
-<div class="ui segment">
-  <div class="ui two column very relaxed grid">
-    <div class="column">
-      <a class="ui red ribbon label">NSFW</a>
-      {{#each posts}}
-      <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
-      <div></div>
-      <div class="ui raised link card">
-        <div class="extra content">
-          <div class="right floated author">
-            <img class="ui avatar image" src="{{this.imgURL}}">
-            {{this.postUser}}
-          </div>
-        </div>
-        <div class="content">
-          <div class="meta">
-            <span class="category">{{this.postCategory}}</span>
-          </div>
-          <div class="description">
-            <p>{{this.postContent}}, {{this.date}}</p>
-          </div>
-          <hr>
-          <div class="ui form">
-            <div class="field">
-              <label>Leave a comment!</label>
-              <textarea rows="2"></textarea>
+
+<div class="container">
+  <div class="ui segment">
+    <div class="ui two column very relaxed centered grid">
+      <div class="column">
+
+        {{#each posts}}
+        <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
+        <div id="cards" class="ui raised centered link card">
+          <a id="ribbon" class="ui red ribbon label">NSFW</a>
+          <div class="extra content">
+            <div class="right floated author">
+              <img class="ui avatar image" src="{{this.imgURL}}">
+              {{this.postUser}}
             </div>
           </div>
+          <div class="content">
+            <div class="meta">
+              <span class="category">{{this.postCategory}}</span>
+            </div>
+            <div class="description">
+              <p>{{this.postContent}}, {{this.date}}</p>
+            </div>
+            <hr>
+            <div class="ui form">
+              <div class="field">
+                <label>Leave a comment!</label>
+                <textarea rows="2"></textarea>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="ui labeled button" tabindex="0">
+                <div class="ui red button">
+                  <i class="heart icon"></i> Like
+                </div>
+                <a class="ui basic red left pointing label">
+                  <!--going to have to connect this with stephanie to show likes on for the post-->
+                  0
+                </a>
+              </div>
+              {{!-- <span class="right floated star">
+                <i class="star icon"></i>
+                Favorite
+              </span> --}}
+              <!--going to have to connect this to the back with Nick-->
+              <button class="ui right floated red basic button">Submit</button>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+      <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+      <div id="secondCol" class="column">
+
+        {{#each posts}}
+        <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
+        <div id="cards" class="ui raised centered link card">
+          <a class="ui blue ribbon label">SFW</a>
           <div class="extra content">
-            <span class="left floated like">
-              <i class="like icon"></i>
-              Like
-            </span>
-            <span class="right floated star">
-              <i class="star icon"></i>
-              Favorite
-            </span>
+            <div class="right floated author">
+              <img class="ui avatar image" src="{{this.imgURL}}">
+              {{this.postUser}}
+            </div>
           </div>
-        </div>
-      </div>
-      {{/each}}
-    </div>
-
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
-    <div class="column">
-      <a class="ui blue ribbon label">SFW</a>
-      {{#each posts}}
-      <!--may need to update the  classes/id's and handlebar refs to match what nick needs-->
-      <div class="ui raised link card">
-        <div class="extra content">
-          <div class="right floated author">
-            <img class="ui avatar image" src="{{this.imgURL}}">
-            {{this.postUser}}
-          </div>
-        </div>
-        <div class="content">
-          <div class="meta">
-            <span class="category">{{this.postCategory}}</span>
-            <!-- will need to make sure that the category is able to put the appropriate post in
+          <div class="content">
+            <div class="meta">
+              <span class="category">{{this.postCategory}}</span>
+              <!-- will need to make sure that the category is able to put the appropriate post in
             the right side-->
-          </div>
-          <div class="description">
-            <p>{{this.postContent}}</p>
+            </div>
+            <div class="description">
+              <p>{{this.postContent}}</p>
+            </div>
+            <hr>
+            <div class="ui form">
+              <div class="field">
+                <label>Leave a comment!</label>
+                <textarea rows="2"></textarea>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="ui labeled button" tabindex="0">
+                <div class="ui blue button">
+                  <i class="heart icon"></i> Like
+                </div>
+                <a class="ui basic blue left pointing label">
+                  <!--going to have to connect this with stephanie to show likes on for the post-->
+                  0
+                </a>
+              </div>
+              {{!-- <span class="right floated star">
+                <i class="star icon"></i>
+                Favorite
+              </span> --}}
+              <!--going to have to connect this to the back with Nick-->
+              <button class="ui right floated blue basic button">Submit</button>
+            </div>
           </div>
         </div>
-        <hr>
-        <div class="ui form">
-          <div class="field">
-            <label>Leave a comment!</label>
-            <textarea rows="2"></textarea>
-          </div>
-        </div>
-        <div class="extra content">
-          <span class="left floated like">
-            <i class="like icon"></i>
-            Like
-          </span>
-          <span class="right floated star">
-            <i class="star icon"></i>
-            Favorite
-          </span>
-        </div>
+        {{/each}}
       </div>
-      {{/each}}
+    </div>
+    <div class="ui vertical divider">
+
     </div>
   </div>
-  <div class="ui vertical divider">
-    and
-  </div>
+
 </div>
