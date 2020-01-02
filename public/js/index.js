@@ -1,5 +1,24 @@
+if (
+  sessionStorage.getItem("accountCreated") === "true" &&
+  window.location.pathname === "/"
+) {
+  $("#accountCreated").text("Account has been created.");
+  console.log(sessionStorage.getItem("accountCreated"));
+} else {
+  $("#accountCreated").text("");
+}
+
+if (window.location.pathname === "/signup") {
+  sessionStorage.setItem("accountCreated", "false");
+}
+
 $("#login").on("click", function(event) {
   event.preventDefault();
+  sessionStorage.setItem("accountCreated", "false"); 
+  if ($("#username").val() === "" || $("#password").val() === "") {
+    $("#loginError").text("A required field is empty");
+  }
+
   $.ajax({
     headers: {
       "Content-Type": "application/json"
@@ -12,9 +31,10 @@ $("#login").on("click", function(event) {
     })
   })
     .then(function(data) {
-      sessionStorage.setItem("id", data.session.id); // Important
-      sessionStorage.setItem("password", data.session.password); // Important
-      window.location.href = data.url; // Important
+      sessionStorage.setItem("id", data.session.id);
+      sessionStorage.setItem("password", data.session.password);
+      sessionStorage.setItem("accountCreated", "false");
+      window.location.href = data.url;
     })
     .catch(err => {
       if (err.statusCode().status === 401) {
@@ -22,8 +42,12 @@ $("#login").on("click", function(event) {
       }
     });
 });
+
 $("#register").on("click", function(event) {
   event.preventDefault();
+  if (!$("#rusername").val() || !$("#rpassword").val() || !$("#remail").val()) {
+    return $("#rerror").text("A required field is empty.");
+  }
   $.ajax({
     headers: {
       "Content-Type": "application/json"
@@ -32,7 +56,8 @@ $("#register").on("click", function(event) {
     url: "/register",
     data: JSON.stringify({
       username: $("#rusername").val(),
-      password: $("#rpassword").val()
+      password: $("#rpassword").val(),
+      email: $("#remail").val()
     })
   })
     .then(data => {
@@ -40,6 +65,8 @@ $("#register").on("click", function(event) {
         alert(data.err);
       } else {
         window.location.href = data.url;
+        console.log("data.url");
+        sessionStorage.setItem("accountCreated", "true");
       }
     })
     .catch(err => {
@@ -47,16 +74,47 @@ $("#register").on("click", function(event) {
     });
 });
 
-$("#user").on("click", (event) => {
-  event.preventDefault()
+$("#user").on("click", event => {
+  event.preventDefault();
   console.log("clicked");
-  
-    window.location.href = `http://localhost:3000/user/${sessionStorage.getItem("id")}`;
-    //  $.ajax({
-    //     type: "GET",
-    //     url: `/user/${sessionStorage.getItem("id")}`
-    //   }).then(response, () => {
-  
-    //   });
-  });
-  
+
+  window.location.href = `http://localhost:3000/user/${sessionStorage.getItem(
+    "id"
+  )}`;
+});
+
+$("#switchMode").on("click", event => {
+  event.preventDefault();
+  console.log("clicked");
+
+  //   });
+  //  {{>sfwfeed}}
+});
+
+$("#post").on("click", function(event) {
+  event.preventDefault();
+  $.ajax({
+    headers: {
+      "Content-Type": "application/json"
+    },
+    type: "POST",
+    url: "/post",
+    data: JSON.stringify({
+      text: $("#postcontent").val(),
+      id: sessionStorage.getItem("id"),
+      password: sessionStorage.getItem("password"),
+      nsfw: $("input[name='nsfw']:checked").val()
+    })
+  })
+    .then(data => {
+      if (data.err) {
+        alert(data.err);
+      } else {
+        //window.location.href = data.url;
+        console.log(data);
+      }
+    })
+    .catch(err => {
+      console.log(err.statusCode());
+    });
+});

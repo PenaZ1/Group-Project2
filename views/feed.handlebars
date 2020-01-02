@@ -14,6 +14,57 @@
             <div class="right floated author">
               <img class="ui avatar image" src="{{this.imgURL}}">
               {{this.postUser}}
+<form action="/posts" method="post">
+  <div>
+      <label>Create post:</label>
+  </div>
+  <div>
+      <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
+      <div class="ui form">
+        <div class="inline fields">
+          <label for="fruit">Select your favorite fruit:</label>
+          <div class="field">
+            <div class="ui radio checkbox checked">
+              <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
+              <label>NSFW</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
+              <label>SFW</label>
+            </div>
+          </div>
+          </div>
+      </div>
+      <input type="submit" value="Post" id="post"/>
+  </div>
+</form>
+<div class="ui segment">
+  <div class="ui two column very relaxed grid">
+    <div class="column">
+      <a class="ui red ribbon label">NSFW</a>
+      {{#each posts}}
+      {{#if this.nsfw}}
+      <div class="ui raised link card nsfwcard">
+        <div class="extra content">
+          <div class="right floated author">
+            <img class="ui avatar image" src="{{this.imgURL}}">
+            {{this.postUser}}
+          </div>
+        </div>
+        <div class="content">
+          <div class="meta">
+            <span class="category">{{this.postCategory}}</span>
+          </div>
+          <div class="description">
+            <p>{{this.postContent}}, {{this.date}}</p>
+          </div>
+          <hr>
+          <div class="ui form">
+            <div class="field">
+              <label>Leave a comment!</label>
+              <textarea rows="2"></textarea>
             </div>
           </div>
           <div class="content">
@@ -74,6 +125,30 @@
             </div>
             <div class="description">
               <p>{{this.postContent}}</p>
+      {{/if}}
+      {{/each}}
+    </div>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="column">
+      <a class="ui blue ribbon label">SFW</a>
+      {{#each posts}}
+        {{#unless this.nsfw}}
+          <div class="ui raised link card sfwcard">
+            <div class="extra content">
+              <div class="right floated author">
+                <img class="ui avatar image" src="{{this.imgURL}}">
+                {{this.postUser}}
+              </div>
+            </div>
+            <div class="content">
+              <div class="meta">
+                <span class="category">{{this.postCategory}}</span>
+                <!-- will need to make sure that the category is able to put the appropriate post in
+                the right side-->
+              </div>
+              <div class="description">
+                <p>{{this.postContent}}</p>
+              </div>
             </div>
             <hr>
             <div class="ui form">

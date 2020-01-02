@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       username: DataTypes.STRING,
       password: DataTypes.STRING,
+      email: DataTypes.STRING,
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -13,8 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  User.associate = function(_models) {
-    // associations can be defined here
+  User.associate = function(models) {
+    User.hasMany(models.Likes, {
+      onDelete: "cascade"
+    });
   };
   return User;
 };

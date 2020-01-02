@@ -22,13 +22,13 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-// Passport Middleware
+// Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Associations
 db.User.hasMany(db.Post);
-// db.User.hasMany(db.User, { as: "followers" });
+db.User.belongsToMany(db.User, { through: "Followers", as: "Follower" });
 
 // Routes
 app.use(routes);

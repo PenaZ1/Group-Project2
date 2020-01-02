@@ -9,12 +9,15 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      UserId: DataTypes.INTEGER
+      UserId: DataTypes.INTEGER,
+      nsfw: DataTypes.BOOLEAN
     },
     {}
   );
-  Post.associate = function(_models) {
-    // associations can be defined here
+  Post.associate = function(models) {
+    Post.hasMany(models.Likes, {
+      onDelete: "cascade"
+    });
   };
   return Post;
 };
