@@ -1,18 +1,17 @@
 <div class="container">
- {{>nav}}
+  {{>nav}}
+
   <div class="row">
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
           <h5 class="card-title">User</h5>
-          <p>
-            <strong>ID</strong>: {{user.id}}</p>
-          <p>
-          <p>
-            <strong>Username</strong>: {{user.username}}</p>
-          <p>
-            <a href="/">← Back To Home</a>
-            
+          <p><strong>ID</strong>: {{user.id}}</p>
+
+          <p> {{user.username}}<strong>Profile</strong></p>
+
+          <a href="/">← Back To Home</a>
+
         </div>
       </div>
     </div>
@@ -20,28 +19,28 @@
 </div>
 <form action="/posts" method="post">
   <div>
-      <label>Create post:</label>
+    <label>Create post:</label>
   </div>
   <div>
-      <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
-      <div class="ui form">
-        <div class="inline fields">
-          <label for="fruit">Select your favorite fruit:</label>
-          <div class="field">
-            <div class="ui radio checkbox checked">
-              <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
-              <label>NSFW</label>
-            </div>
+    <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
+    <div class="ui form">
+      <div class="inline fields">
+        <label for="fruit">Select your favorite fruit:</label>
+        <div class="field">
+          <div class="ui radio checkbox checked">
+            <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
+            <label>NSFW</label>
           </div>
-          <div class="field">
-            <div class="ui radio checkbox">
-              <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
-              <label>SFW</label>
-            </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
+            <label>SFW</label>
           </div>
-          </div>
+        </div>
       </div>
-      <input type="submit" value="Post" id="post"/>
+    </div>
+    <input type="submit" value="Post" id="post" />
   </div>
 </form>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
