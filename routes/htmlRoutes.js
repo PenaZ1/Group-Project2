@@ -55,9 +55,7 @@ htmlRoutes.get("/signup", async (req, res) => {
 });
 
 htmlRoutes.get("/follow", async (req, res) => {
-  res.json(
-    db.User.findAll({ where: { UserId: 1 }, include: { through: "Followers" } })
-  );
+  res.json();
 });
 
 // Render 404 page for any unmatched routes
