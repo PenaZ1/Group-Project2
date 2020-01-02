@@ -29,24 +29,17 @@ htmlRoutes.get("/feed", async (req, res) => {
   });
   for (var i = 0; i < postModels.length; i++) {
     const user = await db.User.findByPk(
-      postModels[i].dataValues.UserId
-      //   , {
-      //   include: [
-      //     {
-      //       model: Likes,
-      //       as: "likes"
-      //     }
-      //   ]
-      // }
-    );
+      postModels[i].dataValues.UserId);
     // include association with find by Pk
     posts.push({
       postUser: user.username,
       postContent: postModels[i].dataValues.text,
       imgURL: "/images/logoprofile.png",
-      nsfw: postModels[i].dataValues.nsfw
+      nsfw: postModels[i].dataValues.nsfw,
+      id: postModels[i].dataValues.id
     });
   }
+  console.log(posts)
   res.render("feed", { posts });
 });
 

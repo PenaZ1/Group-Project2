@@ -82,3 +82,11 @@ $("#switchMode").on("click", event => {
   //   });
   //  {{>sfwfeed}}
 });
+
+$(document).on("click", ".like", event => {
+  event.preventDefault();
+  console.log("liking");
+
+  console.log($(event.target.attributes.value));
+  console.log(this.value);
+});
