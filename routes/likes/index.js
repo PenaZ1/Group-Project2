@@ -9,13 +9,13 @@ likeRoutes.get("/", async (req, res) => {
 });
 
 likeRoutes.post("/:PostId", async (req, res) => {
-  const Likes = await db.Likes.create({
+  db.Likes.create({
     checked: true,
     userID: req.session.id,
     PostId: req.params.PostId
     // front end pass it as postID
   });
-  res.redirect("/feed");
+  res.end();
 });
 
 module.exports = likeRoutes;

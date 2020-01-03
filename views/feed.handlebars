@@ -71,8 +71,9 @@
             </div>
           </div>
           <div class="extra content">
-            <span class="left floated">
-              <i class="like icon" value={{this.id}}></i>
+
+            <span class="left floated" >
+              <i class="like icon" value="{{this.id}}" ></i>
               Like
             </span>
             <button class="ui right floated red button">Submit</button>
@@ -99,15 +100,28 @@
             <span class="category">{{this.postCategory}}</span>
             <!-- will need to make sure that the category is able to put the appropriate post in
                 the right side-->
-          </div>
-          <div class="description">
-            <p>{{this.postContent}}</p>
-          </div>
-          <hr>
-          <div class="ui form">
-            <div class="field">
-              <label>Leave a comment!</label>
-              <textarea rows="2"></textarea>
+
+              </div>
+              <div class="description">
+                <p>{{this.postContent}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="ui form">
+              <div class="field">
+                <label>Leave a comment!</label>
+                <textarea rows="2"></textarea>
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="left floated" >
+                <i class="like icon" value="{{this.id}}"></i>
+                Like
+              </span>
+              <span class="right floated star">
+                <i class="star icon"></i>
+                Favorite
+              </span>
             </div>
           </div>
           <div class="extra content">
