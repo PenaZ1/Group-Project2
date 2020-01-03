@@ -1,4 +1,6 @@
+<div id="containerStyle" class="container">
 {{>nav}}
+</div>
 
 <div class="ui three column grid">
   <div class="column">
@@ -19,18 +21,18 @@
               <div class="field">
                 <div class="ui radio checkbox checked">
                   <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
-                  <labl>NSFW</labl>
                 </div>
+                <labl>NSFW</labl>                
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
                   <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
-                  <label>SFW</label>
                 </div>
+                <label>SFW</label>
               </div>
             </div>
           </div>
-          <input type="submit" value="Post" id="post" />
+          <input type="submit" value="Post" id="post" class = "ui green button" />
         </div>
       </form>
     </div>
@@ -41,7 +43,7 @@
   </div>
 </div>
 
-<div class="ui segment">
+<div class="ui">
   <div class="ui two column very relaxed grid">
     <div class="column">
       {{#each posts}}
@@ -125,7 +127,5 @@
       {{/unless}}
       {{/each}}
     </div>
-  </div>
-  <div class="ui vertical divider">
   </div>
 </div>
