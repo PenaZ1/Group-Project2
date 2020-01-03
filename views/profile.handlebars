@@ -1,26 +1,39 @@
 <style>
-  #nameTitle{
-    font-size: 27px 
-    
-};
+  #nameTitle {
+    font-size: 27px
+  }
+  
+  #bioText {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 </style>
 
-<div class="container">
+<div id="containerStyle" class="container">
+  
   {{>nav}}
 
   <div class="row">
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <p class="header" id="nameTitle"><strong>{{user.username}}'s</strong> Bam Profile!</p>
+          <p class="header" id="nameTitle"><strong>{{user.username}}'s</strong> Bam</p>
           {{!-- <h5 class="header" id="nameTitle">User</h5> --}}
 
-          <p>Bio:</p>
-          
+          <p id="bioText">A B O U T :</p>
+
+          <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
+          <br>
+
+
 
 
           <p hidden><strong>ID</strong>: {{user.id}}</p>
-          
+
           <a href="/">← Back To Home</a>
           <button id="followBtn" type="submit">Follow</button>
         </div>
