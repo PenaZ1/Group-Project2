@@ -14,9 +14,18 @@ htmlRoutes.get("/user/:id", async (req, res) => {
       id: parseInt(req.params.id)
     }
   });
-
+  if (!dbUser){
+    return res.end();
+  }
+  const posts = await db.Post.findAll({
+    where: {
+      UserId: dbUser.id
+    }
+  });
+  console.log(posts)
   res.render("profile", {
-    user: dbUser
+    user: dbUser,
+    posts: posts
   });
 });
 //load feed page upon login needs someone to make sure it's working

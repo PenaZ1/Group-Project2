@@ -1,38 +1,53 @@
 {{>nav}}
 
-<form action="/posts" method="post">
-  <div>
-      <label>Create post:</label>
+<div class="ui three column grid">
+  <div class="column">
+    <div>
+    </div>
   </div>
-  <div>
-      <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
-      <div class="ui form">
-        <div class="inline fields">
-          <label for="fruit">Select your favorite fruit:</label>
-          <div class="field">
-            <div class="ui radio checkbox checked">
-              <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
-              <label>NSFW</label>
+  <div class="column">
+    <div class="ui segment">
+      <form action="/posts" method="post">
+        <div>
+          <label>Create post:</label>
+        </div>
+        <div>
+          <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
+          <div class="ui form">
+            <div class="inline fields">
+              <label for="fruit">Select Safe for Work or Not Safe for Work:</label>
+              <div class="field">
+                <div class="ui radio checkbox checked">
+                  <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
+                  <labl>NSFW</labl>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
+                  <label>SFW</label>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="field">
-            <div class="ui radio checkbox">
-              <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
-              <label>SFW</label>
-            </div>
-          </div>
-          </div>
-      </div>
-      <input type="submit" value="Post" id="post"/>
+          <input type="submit" value="Post" id="post" />
+        </div>
+      </form>
+    </div>
   </div>
-</form>
+  <div class="column">
+    <div>
+    </div>
+  </div>
+</div>
+
 <div class="ui segment">
   <div class="ui two column very relaxed grid">
     <div class="column">
-      <a class="ui red ribbon label">NSFW</a>
       {{#each posts}}
       {{#if this.nsfw}}
-      <div class="ui raised link card nsfwcard" >
+      <div class="ui raised link centered card nsfwcard">
+        <a class="ui red ribbon label">NSFW</a>
         <div class="extra content">
           <div class="right floated author">
             <img class="ui avatar image" src="{{this.imgURL}}">
@@ -54,14 +69,13 @@
             </div>
           </div>
           <div class="extra content">
-            <span class="left floated" >
-              <i class="like icon" value="{{this.id}}" ></i>
+            <span class="left floated">
+              <i class="like icon" value="{{this.id}}"></i>
               Like
             </span>
-            <span class="right floated star">
-              <i class="star icon"></i>
-              Favorite
-            </span>
+            <button class="ui right floated red button">
+              Submit
+            </button>
           </div>
         </div>
       </div>
@@ -70,45 +84,45 @@
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div class="column">
-      <a class="ui blue ribbon label">SFW</a>
       {{#each posts}}
-        {{#unless this.nsfw}}
-          <div class="ui raised link card sfwcard">
-            <div class="extra content">
-              <div class="right floated author">
-                <img class="ui avatar image" src="{{this.imgURL}}">
-                {{this.postUser}}
-              </div>
-            </div>
-            <div class="content">
-              <div class="meta">
-                <span class="category">{{this.postCategory}}</span>
-                <!-- will need to make sure that the category is able to put the appropriate post in
+      {{#unless this.nsfw}}
+      <div class="ui raised link centered card sfwcard">
+        <a class="ui blue ribbon label">SFW</a>
+        <div class="extra content">
+          <div class="right floated author">
+            <img class="ui avatar image" src="{{this.imgURL}}">
+            {{this.postUser}}
+          </div>
+        </div>
+        <div class="content">
+          <div class="meta">
+            <span class="category">{{this.postCategory}}</span>
+            <!-- will need to make sure that the category is able to put the appropriate post in
                 the right side-->
-              </div>
-              <div class="description">
-                <p>{{this.postContent}}</p>
-              </div>
-            </div>
-            <hr>
-            <div class="ui form">
-              <div class="field">
-                <label>Leave a comment!</label>
-                <textarea rows="2"></textarea>
-              </div>
-            </div>
-            <div class="extra content">
-              <span class="left floated" >
-                <i class="like icon" value="{{this.id}}"></i>
-                Like
-              </span>
-              <span class="right floated star">
-                <i class="star icon"></i>
-                Favorite
-              </span>
+          </div>
+          <div class="description">
+            <p>{{this.postContent}}</p>
+          </div>
+          <hr>
+          <div class="ui form">
+            <div class="field">
+              <label>Leave a comment!</label>
+              <textarea rows="2"></textarea>
             </div>
           </div>
-        {{/unless}}
+          <div class="extra content">
+            <span class="left floated">
+              <i class="like icon" value="{{this.id}}"></i>
+              Like
+            </span>
+            <button class="ui right floated blue button">
+              Submit
+            </button>
+          </div>
+        </div>
+
+      </div>
+      {{/unless}}
       {{/each}}
     </div>
   </div>
