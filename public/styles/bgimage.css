@@ -1,4 +1,5 @@
 body{
-    /* background-image: url('../images/whitepaintedBG.jpeg'); */
-    background-image: linear-gradient(to top, white, lightgray) !important;
+    /*background-image: url('../images/bg.png') !important;
+    background-repeat: repeat !important;
+    /* background-image: linear-gradient(to top, white, lightgray) !important; */
 }
