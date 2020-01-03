@@ -1,4 +1,4 @@
 body{
     /* background-image: url('../images/whitepaintedBG.jpeg'); */
-    background-image: linear-gradient(to top, #B00000, white) !important;
+    background-image: linear-gradient(to top, white, lightgray) !important;
 }
