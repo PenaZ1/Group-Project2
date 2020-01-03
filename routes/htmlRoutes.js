@@ -14,9 +14,18 @@ htmlRoutes.get("/user/:id", async (req, res) => {
       id: parseInt(req.params.id)
     }
   });
-
+  if (!dbUser){
+    return res.end();
+  }
+  const posts = await db.Post.findAll({
+    where: {
+      UserId: dbUser.id
+    }
+  });
+  console.log(posts)
   res.render("profile", {
-    user: dbUser
+    user: dbUser,
+    posts: posts
   });
 });
 //load feed page upon login needs someone to make sure it's working
@@ -28,8 +37,7 @@ htmlRoutes.get("/feed", async (req, res) => {
     limit: 10
   });
   for (var i = 0; i < postModels.length; i++) {
-    const user = await db.User.findByPk(
-      postModels[i].dataValues.UserId);
+    const user = await db.User.findByPk(postModels[i].dataValues.UserId);
     // include association with find by Pk
     posts.push({
       postUser: user.username,
@@ -39,7 +47,7 @@ htmlRoutes.get("/feed", async (req, res) => {
       id: postModels[i].dataValues.id
     });
   }
-  console.log(posts)
+  console.log(posts);
   res.render("feed", { posts });
 });
 
@@ -48,7 +56,12 @@ htmlRoutes.get("/signup", async (req, res) => {
 });
 
 htmlRoutes.get("/follow", async (req, res) => {
-  res.json();
+  const user = await db.User.findOne({
+    where: { id: 1 } // req.body.id
+  });
+  const followers = await user.getFollower();
+  console.log(followers);
+  res.render("follow", { followers });
 });
 
 // Render 404 page for any unmatched routes

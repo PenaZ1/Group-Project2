@@ -1,4 +1,5 @@
 body{
     /* background-image: url('../images/darkgradiant.jpg')!important; */
-    background-image: linear-gradient(to top, orange, white) !important;    
+    background-image: linear-gradient(to top, orange, white) !important;
+    background-attachment: fixed !important;
 }
