@@ -1,4 +1,4 @@
 body{
-    /* background-image: url('../images/whitepaintedBG.jpeg'); */
-    background-image: linear-gradient(to top, #336666, white) !important;    
+    /* background-image: url('../images/darkgradiant.jpg')!important; */
+    background-image: linear-gradient(to top, orange, white) !important;    
 }
