@@ -1,6 +1,7 @@
 const Router = require("express").Router;
-const login = new Router();
 const passport = require("../passport");
+
+const login = new Router();
 
 login.post("/login", passport.authenticate("local"), (req, res) => {
   // req.user contains the user

@@ -1,5 +1,6 @@
 <div class="container">
- {{>nav}}
+  {{>nav}}
+
   <div class="row">
     <div class="col-8 offset-2">
       <div class="card mt-4">
@@ -12,41 +13,9 @@
             <strong>Username</strong>: {{user.username}}</p>
           <p>
             <a href="/">← Back To Home</a>
-            
+            <button id="followBtn" type="submit">Follow</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<form action="/posts" method="post">
-  <div>
-      <label>Create post:</label>
-  </div>
-  <div>
-      <textarea rows="4" cols="50" name="postcontent" id="postcontent"></textarea>
-      <div class="ui form">
-        <div class="inline fields">
-          <label for="fruit">Select your favorite fruit:</label>
-          <div class="field">
-            <div class="ui radio checkbox checked">
-              <input type="radio" name="nsfw" checked="" tabindex="0" class="hidden" value=true>
-              <label>NSFW</label>
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui radio checkbox">
-              <input type="radio" name="nsfw" tabindex="0" class="hidden" value=false>
-              <label>SFW</label>
-            </div>
-          </div>
-          </div>
-      </div>
-      <input type="submit" value="Post" id="post"/>
-  </div>
-</form>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- You MUST include jQuery before Fomantic -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
-<script src="/semantic/dist/semantic.min.js"></script>
-<script src="/js/profile.js"></script>

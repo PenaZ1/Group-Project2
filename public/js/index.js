@@ -1,17 +1,24 @@
 if (
-  sessionStorage.getItem("accountCreated") &&
+  sessionStorage.getItem("accountCreated") === "true" &&
   window.location.pathname === "/"
 ) {
   $("#accountCreated").text("Account has been created.");
+  console.log(sessionStorage.getItem("accountCreated"));
+} else {
+  $("#accountCreated").text("");
 }
 
 if (window.location.pathname === "/signup") {
-  sessionStorage.setItem("accountCreated", false);
+  sessionStorage.setItem("accountCreated", "false");
 }
 
 $("#login").on("click", function(event) {
   event.preventDefault();
-  sessionStorage.setItem("accountCreated", false);
+  sessionStorage.setItem("accountCreated", "false"); 
+  if ($("#username").val() === "" || $("#password").val() === "") {
+    $("#loginError").text("A required field is empty");
+  }
+
   $.ajax({
     headers: {
       "Content-Type": "application/json"
@@ -26,7 +33,7 @@ $("#login").on("click", function(event) {
     .then(function(data) {
       sessionStorage.setItem("id", data.session.id);
       sessionStorage.setItem("password", data.session.password);
-      sessionStorage.setItem("accountCreated", false);
+      sessionStorage.setItem("accountCreated", "false");
       window.location.href = data.url;
     })
     .catch(err => {
@@ -35,6 +42,7 @@ $("#login").on("click", function(event) {
       }
     });
 });
+
 $("#register").on("click", function(event) {
   event.preventDefault();
   if (!$("#rusername").val() || !$("#rpassword").val() || !$("#remail").val()) {
@@ -58,7 +66,7 @@ $("#register").on("click", function(event) {
       } else {
         window.location.href = data.url;
         console.log("data.url");
-        sessionStorage.setItem("accountCreated", true);
+        sessionStorage.setItem("accountCreated", "true");
       }
     })
     .catch(err => {
@@ -83,10 +91,39 @@ $("#switchMode").on("click", event => {
   //  {{>sfwfeed}}
 });
 
+
 $(document).on("click", ".like", event => {
   event.preventDefault();
   console.log("liking");
 
   console.log($(event.target.attributes.value));
   console.log(this.value);
+});
+
+$("#post").on("click", function(event) {
+  event.preventDefault();
+  $.ajax({
+    headers: {
+      "Content-Type": "application/json"
+    },
+    type: "POST",
+    url: "/post",
+    data: JSON.stringify({
+      text: $("#postcontent").val(),
+      id: sessionStorage.getItem("id"),
+      password: sessionStorage.getItem("password"),
+      nsfw: $("input[name='nsfw']:checked").val()
+    })
+  })
+    .then(data => {
+      if (data.err) {
+        alert(data.err);
+      } else {
+        //window.location.href = data.url;
+        console.log(data);
+      }
+    })
+    .catch(err => {
+      console.log(err.statusCode());
+    });
 });
