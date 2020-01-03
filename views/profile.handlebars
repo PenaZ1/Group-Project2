@@ -1,3 +1,10 @@
+<style>
+  #nameTitle{
+    font-size: 27px 
+    
+};
+</style>
+
 <div class="container">
   {{>nav}}
 
@@ -5,15 +12,17 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">User</h5>
-          <p>
-            <strong>ID</strong>: {{user.id}}</p>
-          <p>
-          <p>
-            <strong>Username</strong>: {{user.username}}</p>
-          <p>
-            <a href="/">← Back To Home</a>
-            <button id="followBtn" type="submit">Follow</button>
+          <p class="header" id="nameTitle"><strong>{{user.username}}'s</strong> Bam Profile!</p>
+          {{!-- <h5 class="header" id="nameTitle">User</h5> --}}
+
+          <p>Bio:</p>
+          
+
+
+          <p hidden><strong>ID</strong>: {{user.id}}</p>
+          
+          <a href="/">← Back To Home</a>
+          <button id="followBtn" type="submit">Follow</button>
         </div>
       </div>
     </div>
