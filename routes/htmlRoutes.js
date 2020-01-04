@@ -57,11 +57,14 @@ htmlRoutes.get("/signup", async (req, res) => {
 
 htmlRoutes.get("/follow", async (req, res) => {
   const user = await db.User.findOne({
+    include: [
+      { model: db.User, as: "Follower", required: false, through: "Followers" }
+    ],
     where: { id: 1 } // req.body.id
   });
-  const followers = await user.getFollower();
-  console.log(followers);
-  res.render("follow", { followers });
+  //const followers = await user.getUser();
+  console.log(user);
+  res.render("follow", {  });
 });
 
 // Render 404 page for any unmatched routes
