@@ -24,7 +24,12 @@
     "eqeqeq": "error",
     "no-empty-function": "error",
     "no-multi-spaces": "error",
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "camelcase": "error",
     "indent": [
       "error",
