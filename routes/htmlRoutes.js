@@ -62,8 +62,12 @@ htmlRoutes.get("/follow", async (req, res) => {
     ],
     where: { id: 1 } // req.body.id
   });
-  //const follower = user.dataValues.Follower;
-  res.render("follow", { });
+  const followers = [];
+  for (var i = 0; i < user.dataValues.Follower.length; i++){
+    followers.push({ username: user.dataValues.Follower[i].username });
+  }
+  //console.log(user.dataValues.Follower);
+  res.render("follow", { followers });
 });
 
 // Render 404 page for any unmatched routes
