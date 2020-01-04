@@ -3,22 +3,21 @@
   <h2>
     Bam
   </h2>
-  <a href="/feed" class="active item">
+  <a href="/feed"class="navitem item">
     Home
   </a>
-  <a href="#" id="user" class="item">
+  <a href="/user" id="user" class="navitem item">
     Profile
   </a>
-  {{!-- <a href="/follow" id="follow" class="item">
+  <a href="/follow" id="follow" class="navitem item">
     Followed/Followers
   </a>
-  <a href="#" id="like" class="item">
+  <a href="#" id="like" class="navitem item">
     Liked/Favorites
   </a>
- <a href="#" id="switchMode" class="item">
+ <a href="#" id="switchMode" class="navitem item">
     Switch Mode
-  </a> --}}
-
+  </a>
   <div class="right menu">
     <div class="item">
       <div class="ui icon input">
@@ -31,3 +30,14 @@
     </a>
   </div>
 </div>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">
+  var nav = document.getElementsByClassName('navitem'),
+  current = window.location.pathname.split('/')[1];
+  for (var i = 0; i < nav.length; i++) {
+    console.log(nav[i],current);
+    if (nav[i].href.includes(current)) {
+      nav[i].classList.add( "active");
+    }
+  }
+</script>
