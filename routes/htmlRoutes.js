@@ -57,10 +57,16 @@ htmlRoutes.get("/signup", async (req, res) => {
 
 htmlRoutes.get("/follow", async (req, res) => {
   const user = await db.User.findOne({
+    include: [
+      { model: db.User, as: "Follower", required: false, through: "Followers" }
+    ],
     where: { id: 1 } // req.body.id
   });
-  const followers = await user.getFollower();
-  console.log(followers);
+  const followers = [];
+  for (var i = 0; i < user.dataValues.Follower.length; i++){
+    followers.push({ username: user.dataValues.Follower[i].username });
+  }
+  //console.log(user.dataValues.Follower);
   res.render("follow", { followers });
 });
 
